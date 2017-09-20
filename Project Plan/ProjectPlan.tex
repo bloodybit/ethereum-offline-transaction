@@ -68,6 +68,8 @@ Project Plan \\ [25pt]
 
 \date{\normalsize\today} % Today's date or a custom date
 
+\usepackage[backend=bibtex,natbib=true]{biblatex}
+\addbibresource{mybib}
 \begin{document}
 
 \maketitle % Print the title
@@ -85,58 +87,57 @@ The project will be organized as a two-person project, building upon previously 
 
 \section{Background}
 
-This paper is based on a project for TU Berlin in collaboration with Deutsche Telekom regarding identity management through blockchain. The offline solution was developed in order to give the users the possibility to update their social records (stored into the Ethereum public blockchain) without the constraint of downloading the entire blockchain node or use a third party node (which can be malicius and steal the blockchain credentials).
+This paper is based on a project for TU Berlin in collaboration with Deutsche Telekom regarding identity management through blockchain. The offline solution was developed in order to give the users the possibility to update their social records (stored into the Ethereum public blockchain \cite{wood2014ethereum}) without the constraint of downloading the entire blockchain node or use a third party node (which can be malicius and steal the blockchain credentials).
 
 \section{Problem statement}
 
-The project wants to investigate the possibility to create and sign an Ethereum transaction offline and then upload it through a different device or medium, increasing the security of the wallet.
+The project wants to investigate the possibility to create and sign an Ethereum transaction offline and then upload it through a different device or medium, increasing the security of the wallet. With offline transaction, we intend a transaction created from a device which has no local access to the public blockchain.
 
 \section{Problem}
 
-Access to the network in extreme situations or among poor communities is not always possible. The cryptocurrencies are becoming one of the main tool for exchange assets in part of the world where there is not a legitimate government, a weak bank sistem or simply illegal markets.
+Access to the network in extreme situations or within poor communities is not always possible. The cryptocurrencies are becoming one of the main tool for exchange assets in part of the world where there is not a legitimate government, a weak bank sistem or simply illegal markets.
 
-In this situation access to network is not always possible or simply the player are not able to host an entire blockchain node. \\
+In this situation, access to network is not always possible or simply the one of the party the value exchange is not able to host an entire blockchain node. \\
 
-Another part of the population instead, might be required to make a transaction to proceed with a payment or to transfer the property of an asset (as is happening in Sweden, India and so on \textbf{[references]}).
+In some other cases, it might be required to make a blockchain transaction in order to transfer some monetary value (i.e. payments) or the property of an asset (as it is happening in countries like Sweden and India \cite{sweden2017}).
 
 \section{Hypothesis}
 It is possible to create a transaction on one computer or any sort of computational device, sign it and be able to transfer it in a serializable way to another device. \\
 
-The security and the integrity of the transaction must be prevented, preserving it from malicius attacks or lost of information.
+The security and the integrity of the transaction must be assured, preserving it from malicious attacks or loss of information.
 
 \section{Purpose}
 
-The purpose is to present a new approach in order to create a transaction whenever the conditions are contrary or simply the creator of the signature do not want to host the entire ethereum node.
+The purpose of the proposed project is to present a new approach that aims at creating a transaction whenever the conditions are adverse or simply the creator of the signature does not want to host the entire ethereum blockchain node.
 
 
 \section{Goal(s)}
 
-The aim is to create a transaction where the creator is offline, guaranteeing the same level of security as if with cold wallet (no third party to participate in the transaction) but without the constraint of hosting the blockchain node or any plugin requiring an high amount of bandwidth.
+The aim is to create a transaction where the creator is partially, if not completely, offline, guaranteeing the same level of security provided by cold wallets (no third party participating in the transaction). We achieve this without the constraint of holding a blockchain node or any piece of software/plugin that requires an high amount of bandwidth.
 
 \section{Tasks}
 
-Write a simple client server code able to join an Ethereum contract and make transactions.
-The server must be able to receive the transaction via http or another protocol of choice and upload it in its local node.
+Write a simple client server system able to join an Ethereum contract and make transactions. The server holds a blockchain node and it must be able to receive a singed transaction via HTTP (or any another protocol of choice) and send it to the blockchain network. The client is held accountable for creating a transaction and signing it.  
 
 Then an evaluation part is needed; where a certain amount of transactions will be run altogether both in the standard approach following the hot wallet procedure (which allows the user not to host the blockchain node) and the new suggested approach.
 
 \section{Method}
 
-The project will use the analytic method since it must respect the Ethereum specifications in order to create a reliable signed transaction without loss of data and that will be consistant once is sent to the uploader server through any kind of protocol.
+The project will use the analytic method since it must respect the Ethereum specifications in order to create a reliable and consistent signed transaction. The transaction should be created and sent without loss of data..
 
 \section{Milestone chart}
 
-The project has been started on Saturday the 16th of September with the code implementation. \\
+The project started on Saturday the 16th of September with the code implementation. \\
 
-30 September: have a general understanding regarding how the transaction is built nad start the implementation of it. At the same time keep track of what has been learned while writing the paper. \\
+30 September: have a general understanding regarding how the ehtereum transaction is built and start its implementation. At the same time keep track of what has been learned while writing the paper. \\
 
-30 October: Evaluate the solution in a system according to the modalities described in Task section. \\
+30 October: Evaluate the solution in a system according to description provided in the Task section. \\
 
-30 November: the paper has been written and ready for proof of read. \\
+30 November: the paper is written and ready for proof of read. \\
 
 30 December: submit the report. \\
 
-\section{References}
-
+\printbibliography
+%\bibliographystyle{plain}
 
 \end{document}
