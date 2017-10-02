@@ -1,0 +1,149 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{hyperref}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{\thepage} % Page numbering for center footer
+\fancyfoot[R]{} % Empty right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{
+\normalfont \normalsize
+\textsc{Kungliga Tekniska Högskolan, Research Methodologies} \\ [10pt] % Your university, school and/or department name(s)
+Project Plan \\ [16pt]
+\horrule{0.5pt} \\[0.5pt] % Thin top horizontal rule
+\huge Title:\\Identity Management In The Blockchain \\ % The assignment title
+\vspace{5mm}
+\horrule{1pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Riccardo Sibani \\ email: \href{mailto:riccardo.sibani@gmail.com}{riccardo.sibani@gmail.com}
+   \and Filippo Boiani \\ email: \href{mailto:filippo.boiani2@gmail.com}{filippo.boiani2@gmail.com} } % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\renewcommand{\baselinestretch}{1.2} % Line space must be 1.2
+\usepackage[backend=bibtex,natbib=true]{biblatex}
+\addbibresource{mybib}
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Allocation of reponsibilities X}
+Riccardo Sibani is in charge of: writing the first draft; composing the structure of the paper; setting the research questions and hypotheses and explaining the employed method.
+\\
+
+Filippo Boiani is in charge of writing the first sections including introduction and background. The latter will be explained in terms of theoretical framework and literature study. 
+\\
+
+Both are held accountable of the final version of the paper as well as the project development and the evaluation part. The evaluation part will consists of results presentation and further discussions. 
+
+\section{Organization X}
+The project will be organized as a two-person project, building upon previously develop solution at TU Berlin. Once the theoretical process is defined and the implementation ready, there will be an evaluation work.
+
+\section{Background X}
+This project the is based on another project regarding identity management \cite{identityMgmt2003} \cite{gondor2016distributed}, developed at TU Berlin in collaboration with Deutsche Telekom. This domain independent ID management architecture, meant for Distributed Online Social Networks (DOSN) \cite{gondor2014sonic}, is based on an open source, distributes directory system called GSLS (Global Social Lookup System) \cite{gondor2016distributed}. The GSLS executes a single task: mapping a GlobalID to to corresponding user's social profile. 
+
+\section{Problem statement X}
+The aim of our project is to build a blockchain-based, distributed system for self-asserted identities between DOSN \cite{blockchain-id-mgmt2017} by modifying the current GSLS implmentation. In order to do so, it is necessary to investigate different possible approaches -- mainly storage and validation systems -- taking advantage of the secutiry privided by blockchain \cite{nakamoto2008bitcoin}. 
+\\
+
+In other words, the project wants to investigate the possibility to improve the identity management system implemented by G{\"o}nd{\"o}r Sebastian et al.. This system relies on a distributed hash table to map the GlobalIDs to the corresponding user data. However, there are different security issues with this implementation; for example, someone can spawn a malicious node in the DHT network containing validated (in that signed by the real user), but outdated data that can override the correct ones without leaving any trace. 
+\\
+
+In the current implementation, data is checked against the user’s public key and it is considered valid if the signature is correct, but the system cannot be sure if this data is the most recent one. We want to overcome this and other problems by exploiting the security provided by the blockchain. 
+
+\section{Problem X}
+Keeping security and consistency of data is of paramount importance for every system. It is even more important for the GSLS in that it handles personal user's data.  The distributed hash table implementation alone is no longer enough to meet the security requirements. In this particular case, the blockchain consensus and its timestamps can be employed to provide the additional security that is needed. 
+
+\section{Hypothesis X}
+With certain blockchain implementations, it is possible to create a transactions \cite{wood2014ethereum} on one device, sign them with a private key and either send them directly to the network of blockchain nodes or to a service that does this on your behalf. \\
+
+Since a transaction is nothing but a modification of the state in the blockchain, the aformentioned solution can be employed to solve some of the security issues of the GSLS. There are at least a couple of different ways to achieve transactions based on cold walles \cite{icebox} \cite{light-wallet} and the we will probably stress more on this type of solutions. 
+
+\section{Purpose X}
+The purpose is to: first research the state of the art regarding to identity management and blockchains; then conceptualize and design a service to manage self-asserted identities in a blockchain. The serivice derives and evolves from the current GSLS implementation. The final aim is to increase the level of security of the users who want to have the possibility to move their profiles from one social network to another. 
+
+\section{Goal(s) X}
+The aim is to briefly illustrate the main security flaws of the current GSLS implementation. After having done that, we want illustrate some of the frameworks, systems that can be employed to solve the issues. Then, we want to describe the solution we decided to implement along with its evaluation in terms of security and performances. The final outcome should be a qualitative analysis of the implemented identity management system based on blockchain. 
+
+\section{Tasks TODO}
+
+Investigate different implementations of the GSLS The system is composed of a client side and a number of servers connected to one another through the blockchain network. Each instance of the server should hold a blockchain node and it must be able to receive a singed transaction via HTTP (or any another protocol of choice) and send it to the blockchain network. The client is held accountable for creating a blockchain transaction and signing it.  
+
+Then an evaluation part is needed; where a certain amount of transactions will be run altogether both in the standard approach following the hot wallet procedure (which allows the user not to host the blockchain node) and the new suggested approach.
+
+\section{Method ??}
+
+The project will use the analytic method since it must respect the Ethereum specifications in order to create a reliable and consistent signed transaction. The transaction should be created and sent without loss of data..
+
+\section{Milestone chart X}
+
+The project development part started on Saturday the 16th of September with the literature and general industry study. \\
+
+13 October: basing on the studies carried out over the past month, we should have assessed different possible solutions in terms of security and performances. Each and every solution should be based on existing frameworks and blockchain implementations. \\
+
+25 October: define the final approach and start designing the system. The introduction part of the report should be written and reviewed. \\
+
+15 November: a basic working system is implemented and ready to be tested. The test are meant to find implementation flaws. \\
+
+25 November: perform the evaluation in terms of scalability of the server, transaction costs and response times. If part of the solution is based on smart contracts, can they scale to a large number of entries? How is the response time? The evaluation will lead us to some discussion about drawbacks and possible trade-offs. \\
+
+15 December: the paper is written and ready for proof of read. \\
+
+30 December: submit the report. \\
+
+\printbibliography
+%\bibliographystyle{plain}
+
+\end{document}
