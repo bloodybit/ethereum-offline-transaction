@@ -58,13 +58,13 @@
 \textsc{Kungliga Tekniska Högskolan, Research Methodologies} \\ [10pt] % Your university, school and/or department name(s)
 Project Plan \\ [16pt]
 \horrule{0.5pt} \\[0.5pt] % Thin top horizontal rule
-\huge Title:\\Identity Management In The Blockchain \\ % The assignment title
+\huge Identity Management in Blockchain \\ % The assignment title
 \vspace{5mm}
 \horrule{1pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
-\author{Riccardo Sibani \\ email: \href{mailto:riccardo.sibani@gmail.com}{riccardo.sibani@gmail.com}
-   \and Filippo Boiani \\ email: \href{mailto:filippo.boiani2@gmail.com}{filippo.boiani2@gmail.com} } % Your name
+\author{Riccardo Sibani \\ \href{mailto:riccardo.sibani@gmail.com}{riccardo.sibani@gmail.com}
+   \and Filippo Boiani \\ \href{mailto:filippo.boiani2@gmail.com}{filippo.boiani2@gmail.com} } % Your name
 
 \date{\normalsize\today} % Today's date or a custom date
 
@@ -75,10 +75,6 @@ Project Plan \\ [16pt]
 
 \maketitle % Print the title
 
-%----------------------------------------------------------------------------------------
-%	PROBLEM 1
-%----------------------------------------------------------------------------------------
-
 \section{Allocation of reponsibilities}
 Riccardo Sibani is in charge of: writing the first draft; composing the structure of the paper; setting the research questions and hypotheses and explaining the employed method.
 \\
@@ -86,65 +82,63 @@ Riccardo Sibani is in charge of: writing the first draft; composing the structur
 Filippo Boiani is in charge of writing the first sections including introduction and background. The latter will be explained in terms of theoretical framework and literature study. 
 \\
 
-Both are held accountable of the final version of the paper as well as the project development and the evaluation part. The evaluation part will consists of results presentation and further discussions. 
+Both are working on the final version of the report as well as the project development and the evaluation. The evaluation will present the results and further discussion. 
 
 \section{Organization}
 The project will be organized as a two-person project, building upon previously develop solution at TU Berlin. Once the theoretical process is defined and the implementation ready, there will be an evaluation work.
 
 \section{Background}
-This project is based on another project regarding identity management \cite{identityMgmt2003} \cite{gondor2016distributed}, developed at TU Berlin in collaboration with Deutsche Telekom. This domain \textit{independent ID management architecture}, meant for Distributed Online Social Networks (DOSN) \cite{gondor2014sonic}, is based on an open source, distributes directory system called \textit{GSLS} (Global Social Lookup System) \cite{gondor2016distributed}. The GSLS executes a single task: mapping a GlobalID to to corresponding user's social profile. 
+This project is based on another project regarding identity management \cite{identityMgmt2003} \cite{gondor2016distributed}, developed at TU Berlin in collaboration with Deutsche Telekom. This domain \textit{independent ID management architecture}, meant for Distributed Online Social Networks (DOSN) \cite{gondor2014sonic}, is based on an open source, distributed directory system called \textit{GSLS} (Global Social Lookup System) \cite{gondor2016distributed}. The GSLS executes a single task: mapping a GlobalID to the corresponding user's social profile. 
 
 \section{Problem statement}
-The aim of our project is to build a blockchain-based, distributed system for self-asserted identities between DOSN \cite{blockchain-id-mgmt2017} by modifying the current GSLS implementation. In order to do so, it is necessary to investigate different possible approaches -- mainly storage and validation systems -- taking advantage of the secutiry privided by blockchain \cite{nakamoto2008bitcoin}. 
+The aim of the project is to build a blockchain-based, distributed system for self-asserted identities between DOSN \cite{blockchain-id-mgmt2017} by modifying the current GSLS implementation. In order to do so, it is necessary to investigate different possible approaches -- mainly storage and validation systems -- taking advantage of the secutiry privided by blockchain \cite{nakamoto2008bitcoin}. 
 \\
 
-In other words, the project wants to investigate the possibility to improve the identity management system implemented by Sebastian G{\"o}nd{\"o}r et al.\cite{gondor2016distributed}. This system relies on a distributed hash table to map the GlobalIDs to the corresponding user data. However, there are different security issues with this implementation; for example, someone can spawn a malicious node in the DHT network containing validated - meaning signed by the real user - but outdated data that can override the correct ones without leaving any trace. 
+In other words, the project investigats the possibility to improve the identity management system implemented by Sebastian G{\"o}nd{\"o}r et al.\cite{gondor2016distributed}. This system relies on a distributed hash table (DHT) to map the GlobalIDs to the corresponding user data. However, there are different security issues with this implementation; for example, someone can spawn a malicious node in the DHT network containing data signed by the user (validated) but outdated. This uncorrect data can override the correct one. 
 \\
 
-In the current implementation, data is checked against the user’s public key and it is considered valid if the signature is correct, but the system cannot be sure if this data is the most recent one. We want to overcome this and other problems by exploiting the security provided by the blockchain. 
+In the current implementation, data is checked against the user’s public key and it is considered valid if the signature is correct, but the system cannot be sure wether the data is the most recent. We want to overcome this and other problems by exploiting the security, provided by the blockchain. 
 
 \section{Problem}
-Keeping security and consistency of data is of paramount importance for every system. It is even more important for the GSLS in that it handles personal user's data.  The distributed hash table implementation alone is no longer enough to meet the security requirements. In this particular case, the blockchain consensus and its timestamps can be employed to provide the additional security that is needed. 
+Keeping secure and consitent is of paramount importance for many systems. It is even more important for the GSLS since it handles personal data.  The DHT implementation alone is no longer enough to meet the security requirements. In this particular case, the blockchain consensus and its timestamps can be employed to provide the additional security that is needed. 
 
 \section{Hypothesis}
-With certain blockchain implementations, it is possible to create a transactions \cite{wood2014ethereum} on one device, sign them with a private key and either send them directly to the network of blockchain nodes or to a service that does this on the user's behalf. \\
+With certain blockchain implementations, it is possible to create a transactions \cite{wood2014ethereum} on one device, sign them with a private key, and, either send them directly to the network of blockchain nodes or to a service that does this on the user's behalf. \\
 
-Since a transaction is nothing but a modification of the state in the blockchain, the aformentioned solution can be employed to solve some of the security issues of the GSLS. There are at least a couple of different ways to achieve transactions based on cold walles \cite{icebox} \cite{light-wallet} and we will probably stress more on this type of solutions. 
+Since a transaction is nothing but a modification of the state in the blockchain, the aformentioned solution can be employed to solve some of the security issues of the GSLS. There are different ways to achieve transactions based on cold wallets \cite{icebox} \cite{light-wallet} and we will probably focus on this type of solution. 
 
 \section{Purpose}
-The purpose is to: first research the state of the art regarding to identity management and blockchains; then conceptualize and design a service to manage self-asserted identities in a blockchain. The serivice derives and evolves from the current GSLS implementation. The final aim is to increase the level of security of the users who want to have the possibility to move their profiles from one social network to another. 
+Research the state of the art regarding identity management and blockchains. Conceptualize and design a service to manage self-asserted identities in a blockchain starting from the current GSLS implementation. The aim is to increase the level of security of the users who want to have the possibility to move their profiles from one social network to another. 
 
 \section{Goal}
-The aim is to briefly illustrate the main security flaws of the current GSLS implementation. After having done that, we want illustrate some of the frameworks, systems that can be employed to solve the issues. Then, we want to describe the solution we decided to implement along with its evaluation in terms of security and performances. The final outcome should be a qualitative analysis of the implemented identity management system based on blockchain. 
+Briefly illustrate the main security flaws of the current GSLS implementation. After having done that, we illustrate some of the frameworks that can be employed to solve these issues. Then, we describe the implemented solution and the evaluation in terms of security and performance. The final outcome should be a qualitative analysis of the implemented identity management system based on blockchain. 
 
 \section{Tasks}
 
-Investigate different implementations of the GSLS, the system is composed of a client side and a number of servers connected to one another through the blockchain network. 
+Investigate different implementations of the GSLS: the system is composed of a client side and a number of servers connected to one another through the blockchain network. 
 
-Then an implementation part is needed where the team develop a viable solution demonstrating its effectiveness.
+The implementation of a vaible and effective solution needs to be investigates by the team. The priority is to guarantee that the solution will be not invasive for the users. This is done in order to reach the majority of the people registered on federated social networks.
 
-It is priority of the task and the team to guarantee that the solution will be as less invasive as possible to the users in order to reach the majority of the people registered on social networks.
-
-Finally an evaluation part is needed: analyzing the security of the proposed solution, the advantages and the disadvantages of such a system.
+Analyze the security of the proposed solution, the advantages and the disadvantages of such a system.
 
 
 \section{Method}
 
-The project will use the analytic method since it must respect the GSLS and the selected blockchain specifications in order to create a reliable and consistent transaction. The transaction should be created and sent without loss of data and impacting on the users' device as less as possible as well as be safe and secure.
+The project will use the analytic method since it must follow the GSLS and the selected blockchain specifications in order to create a reliable and consistent transaction. The transaction should be created and sent without loss of data impact on the users' device as well as be safe and secure.
 
 \section{Milestone chart}
 
 The project development part started on Saturday the 16th of September with the literature and general industry study. \\
 
-13 October: basing on the studies carried out over the past month, we should have assessed different possible solutions in terms of security and performances. Each and every solution should be based on existing frameworks and blockchain implementations. \\
+13 October: with on the studies carried out over the past month, we have assessed solutions in terms of: security and performances. Each solution should be based on existing frameworks and blockchain implementations. \\
 
 25 October: define the final approach and start designing the system. The introduction part of the report should be written and reviewed. \\
 
-15 November: a basic working system is implemented and ready to be tested. The test are meant to find implementation flaws. \\
+15 November: a basic implementation ready to be tested. The tests are meant to find implementation flaws. \\
 
-25 November: perform the evaluation in terms of scalability of the server, transaction costs and response times. If part of the solution is based on smart contracts, can they scale to a large number of entries? How is the response time? The evaluation will lead us to some discussion about drawbacks and possible trade-offs. \\
+25 November: perform the evaluation in terms of scalability of the server, transaction costs and response times. If part of the solution is based on smart contracts: could they scale to a large number of entries? What is the response time? The evaluation will lead to a discussion about drawbacks and possible trade-offs. \\
 
-15 December: the paper is written and ready for proof of read. \\
+15 December: the report is written and ready for proof read. \\
 
 30 December: submit the report. \\
 
