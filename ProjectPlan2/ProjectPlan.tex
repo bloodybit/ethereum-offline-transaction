@@ -79,7 +79,7 @@ Project Plan \\ [16pt]
 %	PROBLEM 1
 %----------------------------------------------------------------------------------------
 
-\section{Allocation of reponsibilities X}
+\section{Allocation of reponsibilities}
 Riccardo Sibani is in charge of: writing the first draft; composing the structure of the paper; setting the research questions and hypotheses and explaining the employed method.
 \\
 
@@ -88,13 +88,13 @@ Filippo Boiani is in charge of writing the first sections including introduction
 
 Both are held accountable of the final version of the paper as well as the project development and the evaluation part. The evaluation part will consists of results presentation and further discussions. 
 
-\section{Organization X}
+\section{Organization}
 The project will be organized as a two-person project, building upon previously develop solution at TU Berlin. Once the theoretical process is defined and the implementation ready, there will be an evaluation work.
 
-\section{Background X}
+\section{Background}
 This project is based on another project regarding identity management \cite{identityMgmt2003} \cite{gondor2016distributed}, developed at TU Berlin in collaboration with Deutsche Telekom. This domain \textit{independent ID management architecture}, meant for Distributed Online Social Networks (DOSN) \cite{gondor2014sonic}, is based on an open source, distributes directory system called \textit{GSLS} (Global Social Lookup System) \cite{gondor2016distributed}. The GSLS executes a single task: mapping a GlobalID to to corresponding user's social profile. 
 
-\section{Problem statement X}
+\section{Problem statement}
 The aim of our project is to build a blockchain-based, distributed system for self-asserted identities between DOSN \cite{blockchain-id-mgmt2017} by modifying the current GSLS implementation. In order to do so, it is necessary to investigate different possible approaches -- mainly storage and validation systems -- taking advantage of the secutiry privided by blockchain \cite{nakamoto2008bitcoin}. 
 \\
 
@@ -103,21 +103,21 @@ In other words, the project wants to investigate the possibility to improve the 
 
 In the current implementation, data is checked against the user’s public key and it is considered valid if the signature is correct, but the system cannot be sure if this data is the most recent one. We want to overcome this and other problems by exploiting the security provided by the blockchain. 
 
-\section{Problem X}
+\section{Problem}
 Keeping security and consistency of data is of paramount importance for every system. It is even more important for the GSLS in that it handles personal user's data.  The distributed hash table implementation alone is no longer enough to meet the security requirements. In this particular case, the blockchain consensus and its timestamps can be employed to provide the additional security that is needed. 
 
-\section{Hypothesis X}
+\section{Hypothesis}
 With certain blockchain implementations, it is possible to create a transactions \cite{wood2014ethereum} on one device, sign them with a private key and either send them directly to the network of blockchain nodes or to a service that does this on the user's behalf. \\
 
 Since a transaction is nothing but a modification of the state in the blockchain, the aformentioned solution can be employed to solve some of the security issues of the GSLS. There are at least a couple of different ways to achieve transactions based on cold walles \cite{icebox} \cite{light-wallet} and we will probably stress more on this type of solutions. 
 
-\section{Purpose X}
+\section{Purpose}
 The purpose is to: first research the state of the art regarding to identity management and blockchains; then conceptualize and design a service to manage self-asserted identities in a blockchain. The serivice derives and evolves from the current GSLS implementation. The final aim is to increase the level of security of the users who want to have the possibility to move their profiles from one social network to another. 
 
-\section{Goal(s) X}
+\section{Goal}
 The aim is to briefly illustrate the main security flaws of the current GSLS implementation. After having done that, we want illustrate some of the frameworks, systems that can be employed to solve the issues. Then, we want to describe the solution we decided to implement along with its evaluation in terms of security and performances. The final outcome should be a qualitative analysis of the implemented identity management system based on blockchain. 
 
-\section{Tasks TODO}
+\section{Tasks}
 
 Investigate different implementations of the GSLS, the system is composed of a client side and a number of servers connected to one another through the blockchain network. 
 
@@ -128,11 +128,11 @@ It is priority of the task and the team to guarantee that the solution will be a
 Finally an evaluation part is needed: analyzing the security of the proposed solution, the advantages and the disadvantages of such a system.
 
 
-\section{Method ??}
+\section{Method}
 
-The project will use the analytic method since it must respect the Ethereum specifications (the blockchain elected for this project) in order to create a reliable and consistent transaction. The transaction should be created and sent without loss of data and impacting on the users' device as less as possible.
+The project will use the analytic method since it must respect the GSLS and the selected blockchain specifications in order to create a reliable and consistent transaction. The transaction should be created and sent without loss of data and impacting on the users' device as less as possible as well as be safe and secure.
 
-\section{Milestone chart X}
+\section{Milestone chart}
 
 The project development part started on Saturday the 16th of September with the literature and general industry study. \\
 
