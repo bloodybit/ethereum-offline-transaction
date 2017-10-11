@@ -1,5 +1,14 @@
-\section{The case for GSLS System}
 \label{S:3}
+
+\section{The case for GSLS System}
+
+\section{Security issues}
+\begin{itemize}
+  \item No verify the identity of the uploader in the DHT (one node can say someone updated, pass the payload and the other nodes will just register the change). Unfortunately change this behaviour is not very easy due to the current implementation of the DHT, based on a Peer2Peer framework which does not allow to perform such operations in a peer network (you have to trust the sender peer).
+  \item What we want to do with the blockchain is to insert an additional level of security.
+\end{itemize}
+
+
 
 \subsection{Chose the most appropriate blockchain}
 
