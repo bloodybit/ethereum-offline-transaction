@@ -1,64 +1,39 @@
-%% This is file `elsarticle-template-1-num.tex',
-%%
-%% Copyright 2009 Elsevier Ltd
-%%
-%% This file is part of the 'Elsarticle Bundle'.
-%% ---------------------------------------------
-%%
-%% It may be distributed under the conditions of the LaTeX Project Public
-%% License, either version 1.2 of this license or (at your option) any
-%% later version.  The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%%
-%% The list of all files belonging to the 'Elsarticle Bundle' is
-%% given in the file `manifest.txt'.
-%%
-%% Template article for Elsevier's document class `elsarticle'
-%% with numbered style bibliographic references
-%%
-%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
-%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
-%%
-\documentclass[preprint,12pt]{elsarticle}
 
-%% Use the option review to obtain double line spacing
-%% \documentclass[preprint,review,12pt]{elsarticle}
 
-%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
-%% for a journal layout:
-%% \documentclass[final,1p,times]{elsarticle}
-%% \documentclass[final,1p,times,twocolumn]{elsarticle}
-%% \documentclass[final,3p,times]{elsarticle}
-%% \documentclass[final,3p,times,twocolumn]{elsarticle}
-%% \documentclass[final,5p,times]{elsarticle}
-%% \documentclass[final,5p,times,twocolumn]{elsarticle}
 
-%% if you use PostScript figures in your article
-%% use the graphics package for simple commands
-%% \usepackage{graphics}
-%% or use the graphicx package for more complicated commands
-%% \usepackage{graphicx}
-%% or use the epsfig package if you prefer to use the old commands
-%% \usepackage{epsfig}
+\title{Identity Management in Blockchain}
+\author{
+        \textsc{Riccardo Sibani}
+            \qquad
+        \textsc{Filippo Boiani}
+        \mbox{}\\
+        \normalsize
+            \texttt{rsibani@kth}
+        \textbar{}
+            \texttt{boiani@kth.se}
+        % \normalsize
+        %     \texttt{@kth.se}
+}
+\date{\today}
 
-%% The amssymb package provides various useful mathematical symbols
-\usepackage{amssymb}
-%% The amsthm package provides extended theorem environments
-%% \usepackage{amsthm}
+\documentclass[12pt,twoside]{article}
 
-%% The lineno packages adds line numbers. Start line numbering with
-%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
-%% for the whole article with \linenumbers after \end{frontmatter}.
-\usepackage{lineno}
+\usepackage[paper=a4paper,dvips,top=1.5cm,left=1.5cm,right=1.5cm,
+    foot=1cm,bottom=1.5cm]{geometry}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
-\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
-\usepackage[english]{babel} % English language/hyphenation
-\usepackage{amsmath,amsfonts,amsthm} % Math packages
 
+%\usepackage[T1]{fontenc}
+%%\usepackage{pslatex}
+\renewcommand{\rmdefault}{ptm} 
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+%
+\usepackage{bookmark}
+
+\usepackage{fancyhdr}
+\providecommand{\keywords}[1]{\textbf{\textit{Index terms---}} #1}
+\pagestyle{fancy}
 
 \usepackage{rotating}
 \newcommand\tabrotate[1]{\begin{turn}{90}\rlap{#1}\end{turn}}
@@ -66,7 +41,6 @@
 
  % Useful Basics
  \usepackage{color}
- \usepackage{xcolor}
  \usepackage{framed}
  \usepackage{listings}
 
@@ -75,78 +49,152 @@
    \def\FrameCommand{\colorbox{yellow!20}}%
    \MakeFramed{\advance\hsize-\width \FrameRestore}}
  {\endMakeFramed}
+ 
+%%----------------------------------------------------------------------------
+%%   pcap2tex stuff
+%%----------------------------------------------------------------------------
+ \usepackage[dvipsnames*,svgnames]{xcolor} %% For extended colors
+ \usepackage{tikz}
+ \usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,calc,shapes}
 
-%% natbib.sty is loaded by default. However, natbib options can be
-%% provided with \biboptions{...} command. Following options are
-%% valid:
+%% \usepackage{pgfmath}	% --math engine
+%%----------------------------------------------------------------------------
+%% \usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc} % inputenc allows the user to input accented characters directly from the keyboard
+\usepackage[swedish,english]{babel}
+%% \usepackage{rotating}		 %% For text rotating
+\usepackage{array}			 %% For table wrapping
+\usepackage{graphicx}	                 %% Support for images
+\usepackage{float}			 %% Suppor for more flexible floating box positioning
+\usepackage{color}                       %% Support for colour 
+\usepackage{mdwlist}
+%% \usepackage{setspace}                 %% For fine-grained control over line spacing
+%% \usepackage{listings}		 %% For source code listing
+%% \usepackage{bytefield}                %% For packet drawings
+\usepackage{tabularx}		         %% For simple table stretching
+%%\usepackage{multirow}	                 %% Support for multirow colums in tables
+\usepackage{dcolumn}	                 %% Support for decimal point alignment in tables
+\usepackage{url}	                 %% Support for breaking URLs
+\usepackage[perpage,para,symbol]{footmisc} %% use symbols to ``number'' footnotes and reset which symbol is used first on each page
 
-%%   round  -  round parentheses are used (default)
-%%   square -  square brackets are used   [option]
-%%   curly  -  curly braces are used      {option}
-%%   angle  -  angle brackets are used    <option>
-%%   semicolon  -  multiple citations separated by semi-colon
-%%   colon  - same as semicolon, an earlier confusion
-%%   comma  -  separated by comma
-%%   numbers-  selects numerical citations
-%%   super  -  numerical citations as superscripts
-%%   sort   -  sorts multiple citations according to order in ref. list
-%%   sort&compress   -  like sort, but also compresses numerical citations
-%%   compress - compresses without sorting
-%%
-%% \biboptions{comma,round}
+%% \usepackage{pygmentize}           %% required to use minted -- see python-pygments - Pygments is a Syntax Highlighting Package written in Python
+%% \usepackage{minted}		     %% For source code highlighting
 
-% \biboptions{}
+%% \usepackage{hyperref}		
+\usepackage[all]{hypcap}	 %% Prevents an issue related to hyperref and caption linking
+%% setup hyperref to use the darkblue color on links
+%% \hypersetup{colorlinks,breaklinks,
+%%             linkcolor=darkblue,urlcolor=darkblue,
+%%             anchorcolor=darkblue,citecolor=darkblue}
 
-\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+%% Some definitions of used colors
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3} %% define a color called darkblue
+\definecolor{darkred}{rgb}{0.4,0.0,0.0}
+\definecolor{red}{rgb}{0.7,0.0,0.0}
+\definecolor{lightgrey}{rgb}{0.8,0.8,0.8} 
+\definecolor{grey}{rgb}{0.6,0.6,0.6}
+\definecolor{darkgrey}{rgb}{0.4,0.4,0.4}
+%% Reduce hyphenation as much as possible
+\hyphenpenalty=15000 
+\tolerance=1000
 
-\usepackage[backend=bibtex,natbib=true]{biblatex}
-%\usepackage[backend=bibtex,style=ieee,natbib=true]{biblatex}
-%\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
-\bibliography{bibliography/bib.bib}
-%\addbibresource{bibliography/bib}
+%% useful redefinitions to use with tables
+\newcommand{\rr}{\raggedright} %% raggedright command redefinition
+\newcommand{\rl}{\raggedleft} %% raggedleft command redefinition
+\newcommand{\tn}{\tabularnewline} %% tabularnewline command redefinition
 
+%% definition of new command for bytefield package
+\newcommand{\colorbitbox}[3]{%
+	\rlap{\bitbox{#2}{\color{#1}\rule{\width}{\height}}}%
+	\bitbox{#2}{#3}}
 
-\journal{}
+%% command to ease switching to red color text
+\newcommand{\red}{\color{red}}
+%%redefinition of paragraph command to insert a breakline after it
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
 
+%%redefinition of subparagraph command to insert a breakline after it
+\makeatletter
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\setcounter{tocdepth}{3}	%% 3 depth levels in TOC
+\setcounter{secnumdepth}{5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\headrulewidth}{0pt}
+\lhead{II2202, Fall 2017, Period 1-2}
+%% or \lhead{II2202, Fall 2016, Period 1}
+\chead{Draft project report}
+\rhead{\date{\today}}
+
+\makeatletter
+\let\ps@plain\ps@fancy 
+\makeatother
+
+\setlength{\headheight}{15pt}
 \begin{document}
 
-\begin{frontmatter}
+\maketitle
 
-%% Title, authors and addresses
+\begin{notation}
+    To finish and correct once the report is done. 
+\end{notation}
 
-%% use the tnoteref command within \title for footnotes;
-%% use the tnotetext command for the associated footnote;
-%% use the fnref command within \author or \address for footnotes;
-%% use the fntext command for the associated footnote;
-%% use the corref command within \author for corresponding author footnotes;
-%% use the cortext command for the associated footnote;
-%% use the ead command for the email address,
-%% and the form \ead[url] for the home page:
-%%
-%% \title{Title\tnoteref{label1}}
-%% \tnotetext[label1]{}
-%% \author{Name\corref{cor1}\fnref{label2}}
-%% \ead{email address}
-%% \ead[url]{home page}
-%% \fntext[label2]{}
-%% \cortext[cor1]{}
-%% \address{Address\fnref{label3}}
-%% \fntext[label3]{}
+\begin{abstract}
+\label{sec:abstract}
 
-\title{Identity Management in Blockchain}
+%\include{sections/abstract}     % abstract and keywords
 
 
-%% use optional labels to link authors explicitly to addresses:
-%% \author[label1,label2]{<author name>}
-%% \address[label1]{<address>}
-%% \address[label2]{<address>}
-
-\author{Riccardo Sibani, Filippo Boiani}
-
-\address{KTH, Kungliga Tekniska Högskolans} 
+%% Text of abstract
+Background OSNs, they use Sonic as a protocol and Sonic relies on a distributed system called Global Social Lookup System. The GSLS can be seen as a service mapping user identity with user social profiles. It is completely open source and based on a Distributed Hash Table to handle communication and persistence. This implementation and its openness bears a list of security issues. The aim of this project is to overcome this issues by exploiting the characteristic of blockchain. Blockchain is distributed ledger bla bla... and can provide both storage and validation features. In order to do so we research the state of the art regarding identity management and blockchain. We describe some of the security issues related to the current implementation of the GSLS; conceptualize and design a service to manage self-asserted identities in a blockchain. The new system is then evaluated in terms of performance, security and invasivity for the user. 
 
 
-\include{sections/abstract}     % abstract and keywords
+
+\keywords{
+Blockchain, Identity Management, Distributed Systems,  OSNs}
+%% keywords here, in the form: keyword \sep keyword
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+
+
+\end{abstract}
+
+\clearpage
+
+\selectlanguage{english}
+\tableofcontents
+
+\section*{List of Acronyms and Abbreviations}
+\label{list-of-acronyms-and-abbreviations}
+
+This document requires readers to be familiar with terms and concepts of blockchain technology, identity management and distributed networks. For clarity we summarize some of these terms and give a short description of them before presenting them in next sections.
+
+\begin{basedescript}{\desclabelstyle{\pushlabel}\desclabelwidth{10em}}
+\item[GSLS Client]              It is a piece of code that allows the user to interact and send request to the GSLS server. In our last approach, the client is implemented as a Desktop application.
+\item[GSLS server (or node)]    The GSLS server is a piece of code that exposes api callable by the GSLS client via HTTP protocol. The server is also a blockchain client in that it is either connected to an Ethereum node or it is an actual node in the network.
+\item[DHT]                      A distributed hash table (DHT) is a class of a decentralised distributed system that provides a lookup service similar to a hash table.
+\item[SR]                       Social record, the user is the one that owns a social record and has the right to create and update it as well as to search for other social records. The user does this by interacting with an application, the GSLS client.
+\end{basedescript}
+
+
+\clearpage
+
+
+
 \include{sections/introduction} % introduction to the topic 
 \include{sections/relatedWorks} % theoretical framework and literature study 
 \include{sections/transaction}  % research questions and hypotheses
@@ -155,106 +203,14 @@
 \include{sections/conclusion}   % discussion
 
 
+%%\bibliographystyle{IEEEtran}
+\bibliographystyle{myIEEEtran}
 
-%%
-%% Start line numbering here if you want
-%%
-% \linenumbers
+\bibliography{bibliography/bib}
+\appendix
+% \section{Insensible Approximation}
 
-%% main text
-% \section{The First Section}
-% \label{S:1}
-
-% Maecenas \cite{Smith:2012qr} fermentum \cite{Smith:2013jd} urna ac 
-
-% \begin{itemize}
-% \item Bullet point one
-% \item Bullet point two
-% \end{itemize}
-
-% \begin{enumerate}
-% \item Numbered list item one
-% \item Numbered list item two
-% \end{enumerate}
-
-% \subsection{Subsection One}
-
-% Quisque elit ipsum, porttitor et imperdiet in, facilisis ac diam. Nunc 
-
-% \begin{table}[h]
-% \centering
-% \begin{tabular}{l l l}
-% \hline
-% \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-% \hline
-% Treatment 1 & 0.0003262 & 0.562 \\
-% Treatment 2 & 0.0015681 & 0.910 \\
-% Treatment 3 & 0.0009271 & 0.296 \\
-% \hline
-% \end{tabular}
-% \caption{Table caption}
-% \end{table}
-
-% \subsection{Subsection Two}
-
-% Donec eget ligula venenatis est posuere eleifend in sit amet diam. 
-
-% \begin{figure}[h]
-% \centering\includegraphics[width=0.4\linewidth]{placeholder}
-% \caption{Figure caption}
-% \end{figure}
-
-% Integer risus dui, condimentum et gravida vitae, adipiscing et enim. 
-
-% \begin{equation}
-% \label{eq:emc}
-% e = mc^2
-% \end{equation}
-
-% \section{The Second Section}
-% \label{S:2}
-
-% Reference to Section \ref{S:1}. Etiam congue sollicitudin diam non 
-
-%% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
-%% \appendix
-
-%% \section{}
-%% \label{}
-
-%% References
-%%
-%% Following citation commands can be used in the body text:
-%% Usage of \cite is as follows:
-%%   \cite{key}          ==>>  [#]
-%%   \cite[chap. 2]{key} ==>>  [#, chap. 2]
-%%   \citet{key}         ==>>  Author [#]
-
-%% References with bibTeX database:
-
-% \bibliographystyle{model1-num-names}
-% \bibliography{bib.bib}
-
-%% Authors are advised to submit their bibtex database files. They are
-%% requested to list a bibtex style file in the manuscript if they do
-%% not want to use model1-num-names.bst.
-
-%% References without bibTeX database:
-
-% \begin{thebibliography}{00}
-
-% % \bibitem must have the following form:
-% %   \bibitem{key}...
-% %
-
-% \bibitem{}
-
-% \end{thebibliography}
-\printbibliography[heading=bibintoc]
+% Note that the Appendix or Appendices are Optional.
 
 
 \end{document}
-
-%%
-%% End of file `elsarticle-template-1-num.tex'.
