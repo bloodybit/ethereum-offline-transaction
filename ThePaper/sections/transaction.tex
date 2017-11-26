@@ -11,18 +11,18 @@ The identified solution is to replace the DHT layer with the blockchain technolo
 
   How to explain this without sources if not the persona experience??
 \end{notation}
-The main reasons we choose such approach are:
+The main reasons we choose this approach are:
 
 \begin{itemize}
   \item Consistent storage by definition. Ethereum blockchain creates different replicas of the same database in each node of the network. With such solution, nodes can enter or exit the network without compromising any social record.
-  \item In case of failure, it is easily possible to recover the state of the database and re-execute the missing transactions.
-  \item Ethereum can be defined as a distributed ledger, in fact, it is not possible to forge part of the database (if not at least the 50\% + 1 of the nodes are corrupted). Preventing any node to send wrong social records.
-  \item One of the main features of the blockchain is the endless scalability: this permits to set up an high number of nodes (multiple GSLS servers per each OSN and the users who are willing to set up one node) without any problem.
-  Even better, increasing the size of the network and therefore the difficulty of a rewrite attack (which needs 50\% + number of nodes).
-  \item Hosting one node gives the possibility to locally access the social records stored into the GSLS storage. In the previous implementation (with DHT) it was possible that the one specific social record was only available in nodes far away from the requesting resource, creating a delay in the delivery of the information. 
+  \item In case of failure, it is possible to recover the state of the database and re-execute the missing transactions.
+  \item Ethereum is a distributed ledger, it is not possible to forge part of the database (at least 50\% + 1 of the nodes must be corrupted). Preventing any node to send misleading social records.
+  \item One of the main features of the blockchain is the endless scalability: this permits to set up a high number of nodes (multiple GSLS servers per each OSN and the users who are willing to set up one node) without facing any delay.
+  Even better, increasing the size of the network and therefore the difficulty of a rewrite attack (50\% + number of nodes).
+  \item Hosting one node allows to locally access the social records stored into the GSLS storage. In the previous implementation (with DHT) it was possible that one specific social record was only available in nodes far away from the requesting resource, creating a delay in the delivery of the information. 
 \end{itemize}
 
-Given these premises, Ethereum blockchain seems to be the right tool for the job: providing a consistent, distribute and scalable and environment, accessible by all the player at the same time.
+Given these premises, Ethereum blockchain seems to be the tool for the job: providing a consistent, distribute and scalable and environment; accessible by all the player at the same time.
 
 
 
