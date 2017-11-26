@@ -1,7 +1,46 @@
 
 \section{Design GSLS 2.0}
 
-The identified solution is to replace the DHT layer with the blockchain technology, in particular Ethereum.
+\subsection{Choosing the blockchain}
+The choice of the most appropriate blockchain technologyshould take into account:
+
+\begin{itemize}
+  \item Acknowledged security: the blockchain should not contain any technical flaw and be recognized by the community as \textit{trustable}. This is important since many projects are based on a good and promising concept but often times fail on the practical implementation.
+  \item Production stage: many blockchains on the market are still young and premature. This problem is probably due to the fact that investors want to go fast on the market, creating overhead and confusion to the third party services that will embraced a yet-not-ready product.
+  \item Contract execution: the execution of the contracts allows to define rules (e.g. which authorities is is able to change a GlobalId and the modalities of such operations).
+  \item Decentralized Control: since it is a blockchain prerogative, the technology should not be owned by a restricted group of actors and everyone must be able to join at will.
+\end{itemize}
+
+In table \ref{table:1} we analyse the most famous blockchains.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |p{7cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+\hline
+\multicolumn{5}{|c|}{Chosing the blockchain} \\
+\hline
+Blockchain candidate & Security & Production Stage & Contract Execution & Public \\
+\hline
+Bitcoin and AltCoin \cite{Nakamoto_bitcoin:a} & Yes & Yes & No\cite{Bitcoin_notTuringComplete} & Yes \\
+\hline
+Ethereum \cite{etherum_whitepaper} & Yes & Yes & Yes & Yes \\
+\hline
+BigchainDB \cite{bigchaindb_whitepaper} & No \cite{_bigchaindb_bullshit} \ & No & Yes & Yes \\
+\hline
+Lisk (not whitepaper available a.t.m., https://lisk.io/)& Yes & No \cite{lisk_problems} & Yes & Yes \\
+\hline
+IOTA \cite{iota_whitepaper}& No \cite{iota_problems} & No & Yes & Yes \\
+\hline
+Hyperledger Fabric \cite{martindale_fabric:_2017}& Yes & Yes & Yes & No \\
+\hline
+R3 Corda \cite{corda_whitepaper}& Yes & Yes & Yes & No \\
+\hline
+\end{tabular}
+\caption{Table to compare blockchains}
+\label{table:1}
+\end{table}
+
+Given this constrain, the Ethereum technology seems to be the one that most fits our necessities of replacing the previous DHT system.
 
 \begin{notation}
   TODO: \\
