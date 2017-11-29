@@ -64,11 +64,56 @@ The main reasons we choose this approach are:
 Given these premises, Ethereum blockchain seems to be the tool for the job: providing a consistent, distribute and scalable and environment; accessible by all the player at the same time.
 
 
+\subsection{Ethereum ecosystem}
 
-\subsubsection{Serializability of the Ethereum Transaction}
+Ethereum is an \textit{account model} blockchain \cite{etherum_whitepaper}, therefor different from the mainstream \textit{UTXO model}  (such as Bitcoin blockchain). This alternative implementation allows to save memory space since the balance is kept into the account state (a key-value storage mapping addresses to account state object \cite{ethereum_yellowpaper}) rather then keeping track of all the transaction changes (utxo) generated from one account.
 
-Put the picture made with illustrator which is self explanatory
+Blockchain can be seen as a system that shift from a state $t$ ($\sigma_t$) to a state $t+1$ ($\sigma_{t+1}$) thanks to the transactions $[t_0,t_1,...,t_n]$ (where $n$ is the number of the transaction $n-1$) stored into the block $B$ \ref{table:2}.
 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |p{3cm}|  }
+\hline
+\multicolumn{1}{|c|}{Block structure} \\
+\hline
+\hline
+Header \\
+\hline
+Transactions $[t_0,t_1,...,t_n]$ \\
+\hline
+Headers of onners blocks\\
+\hline
+\end{tabular}
+\caption{Basic structure of an Ethereum block}
+\label{table:2}
+\end{table}
+
+Once the block is mined, is broadcasted and each node at state $t$  executes, through the Ethereum Virtual Machine (EVM), each transaction inside the block in order.
+This algorithm allows the nodes to eventually converge to the same state $t+1$ at some point in time.
+
+Building the transaction instead, is out of the scope of the EVM: this operations is delegated to the human being who owns the account or any sort of software/wallet she decides to employ.
+
+There are two types of transactions: \textit{account creation} and \textit{message call to existing account}. Even though these two types are conceptually distant, they share the same structure:
+
+\begin{itemize}
+  \item \textbf{nonce}: number of transaction sent from the sender account.
+  \item \textbf{gasPrice}: number of wei (smallest monetary unit) to pay per each unit of gas.
+  \item \textbf{gasLimit}: maximum amount of gas that shall be used to execute the current transaction.
+  \item \textbf{to}: address account of the receiver.
+  \item \textbf{value}: number of wei assigned to the transaction.
+  \item \textbf{v, r, s}: Value of the transaction signature, this parameters are used to recover the sender signature \cite{gura2004comparing}.
+  \item \textbf{init}: field with unlimited size, here the initialisation commands are specified directly in EVM code. This field is analysed only if the \textit{to} field is left empty.
+  \item \textbf{data}: field with unlimited size, specify the input data of the message call.
+\end{itemize}
+
+Is trivial to notice that among all these fields the \textit{v}, \textit{r} and \texti{s} are the most private ones; basing on this assumption we aim to create a workflow which allows the sender to create and upload transactions even when an internet connection is not available to him. 
+
+\subsubsection{Serializability of the Ethereum transaction}
+
+
+
+Put the picture made with illustrator which is self explanatory 
 
 \begin{notation}
   Need to maintain the account key pair in order to validate the social record
