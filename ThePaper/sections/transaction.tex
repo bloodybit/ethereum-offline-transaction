@@ -23,7 +23,7 @@ Blockchain candidate & Security & Production Stage & Contract Execution & Public
 \hline
 Bitcoin and AltCoin \cite{Nakamoto_bitcoin:a} & Yes & Yes & No\cite{Bitcoin_notTuringComplete} & Yes \\
 \hline
-Ethereum \cite{etherum_whitepaper} & Yes & Yes & Yes & Yes \\
+Ethereum \cite{ethereum_whitepaper} & Yes & Yes & Yes & Yes \\
 \hline
 BigchainDB \cite{bigchaindb_whitepaper} & No \cite{_bigchaindb_bullshit} \ & No & Yes & Yes \\
 \hline
@@ -66,7 +66,7 @@ Given these premises, Ethereum blockchain seems to be the tool for the job: prov
 
 \subsection{Ethereum ecosystem}
 
-Ethereum is an \textit{account model} blockchain \cite{etherum_whitepaper}, therefor different from the mainstream \textit{UTXO model}  (such as Bitcoin blockchain). This alternative implementation allows to save memory space since the balance is kept into the account state (a key-value storage mapping addresses to account state object \cite{ethereum_yellowpaper}) rather then keeping track of all the transaction changes (utxo) generated from one account.
+Ethereum is an \textit{account model} blockchain \cite{ethereum_whitepaper}, therefor different from the mainstream \textit{UTXO model}  (such as Bitcoin blockchain). This alternative implementation allows to save memory space since the balance is kept into the account state (a key-value storage mapping addresses to account state object \cite{ethereum_yellowpaper}) rather then keeping track of all the transaction changes (utxo) generated from one account.
 
 Blockchain can be seen as a system that shift from a state $t$ ($\sigma_t$) to a state $t+1$ ($\sigma_{t+1}$) thanks to the transactions $[t_0,t_1,...,t_n]$ (where $n$ is the number of the transaction $n-1$) stored into the block $B$ \ref{table:2}.
 
@@ -110,8 +110,28 @@ There are two types of transactions: \textit{account creation} and \textit{messa
 Is trivial to notice that among all these fields the \textit{v}, \textit{r} and \texti{s} are the most private ones; basing on this assumption we aim to create a workflow which allows the sender to create and upload transactions even when an internet connection is not available to him. 
 
 \subsubsection{Serializability of the Ethereum transaction}
+Each user has a public key and a private key. It is possible to infer the public key starting from the private key; so that, given a random sequence of bytes is possible to create the key pair.
 
+The account address are just the last 160 bit of the public key hashed via SHA3-256 \cite{sha3_256_keccak}.
 
+Once the values of the transaction are set: \textit{nonce}, \textit{gasPrice}, \textit{gasLimit}, \textit{to} (can be left empty if is a new contract), \textit{value}, \textit{data} is possible to serialise it via recursive length prefix (RLP) \cite{ethereum_whitepaper} and hash it. Then the hash is signed with the private key, generating \textit{v}, \textit{r}, \textit{s}.
+
+\subsection{Verify correctness of the transaction}
+Once these transaction is ready, it can be uploaded to the network and being mined.
+
+When the EVM will execute it, it will in order:
+\begin{enumerate}
+  \item Verify that the RLP serialisation is not corrupted (no bytes at the end of the bytestream).
+  \item Verify the transaction signature, recovering the public key from \textit{v}, \textit{r}, \textit{s} and finding the transaction hash; then comparing it with the RLP hash of the data received.
+  \item Verify the validity od the \textit{nonce}, this operation can only be done after the public key has been recovered.
+  \item Verify that the unit of gas are sufficient to complete the transaction.
+  \item Verify that the sender balance is sufficient to execute the transaction ($gasPrice * gasLimit$).
+\end{enumerate}
+
+As showed, the transaction is serialised and encrypted when is uploaded to the blockchain.
+At this stage is not possible to decrypt it or change any fields.
+
+It is therefore possible to stream the bytes of the transaction from one device to another in a safe manner.
 
 Put the picture made with illustrator which is self explanatory 
 
