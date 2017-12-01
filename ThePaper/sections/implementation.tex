@@ -1,0 +1,26 @@
+\section{GSLS workflow}
+
+
+In this implementation, the GSLS becomes an Ethereum node which proxies the user requests to the Ethereum node itself.
+The users must download a desktop application (or can build the transaction by themselves). Is recommendable that this process is carried out offline: in order to avoid attacks.
+
+\subsection{Solidity data structures}
+Solidity is the name of the Ethereum contract language. It is designed to optimize the efficiency and memory of the EVM and, for these reasons, it does not allow arrays with undefined length.
+The only solution to this issue is to map types in a key-value fashion.
+
+One data structure is requires to map the sender address with its own \textit{globalId} (the user unique identifier for the OSN).  To increase the reading performance, another mapping has been designed: from \textit{globalId} to \textit{socialRecord} information.
+
+This approach might be criticized because it implements one more data structure: especially considering that the storage increase exponentially with the number of nodes but, nevertheless justified by the fact of having an iterable map requires the same additional data structure by definition as in \cite{datastructure_solidity}.
+
+\begin{notation}
+  Should we add image or table with the data structures?
+\end{notation}
+
+
+\subsection{Write operation}
+The user must create or own a \textit{key pair} (public \& private key) on the client side (See Electron desktop application in the appendix).
+In order to create a new transaction, the sender must know his \textit{nonce}, the current \textit{gasPrice} and the \textit{gasLimit}. This values are available to any node, therefore the desktop application sends a get request to the GSLS along with its account address. Once all the fields are known to the sender, she signs it with its private key, encode it via RLP and send to the GSLS server.
+
+\begin{notation}
+  Append contract in the appendix
+\end{notation}
