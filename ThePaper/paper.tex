@@ -158,11 +158,13 @@
 
 
 %% Text of abstract
-SONIC is an identity management protocol that allows to have a unique user social profile and to migrate it between different online social networks (OSN). Sonic relies on a distributed system called Global Social Lookup System. GSLS can be seen as a service mapping a user gloabal identity to its social profiles. Is open source and based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness carries a list of security issue. The aim of this project is to overcome this issues by exploiting the characteristic of blockchain. Blockchain is distributed ledger bla bla... and can provide both storage and validation features. 
-% In order to do so we research the state of the art regarding identity management and blockchain. 
-We describe some of the security issues related to the current implementation of GSLS; design a service to manage self-asserted identities in a blockchain. The new system is then evaluated in terms of performance, security, privacy and invasiveness for the user. 
+SONIC is an identity management protocol that allows to have a unique user social profile and to migrate it between different online social networks (OSN). Sonic relies on a distributed system called Global Social Lookup System. GSLS can be seen as a service mapping a user global identity to its social profiles. Is open source and based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness carries a list of security issue. The aim of this project is to overcome these issues by exploiting the characteristic of blockchain. 
 
+Consensus, distribution and unforgeability of blockchain are valuable characteristics in a context where information needs to be shared and everybody needs to agree on the same state. 
+ 
+Hence, we describe some of the security issues related to the current implementation of GSLS and propose a new design that takes advantage of blockchain. The new system is then evaluated in terms of performance, security, privacy and invasiveness for the user. 
 
+The results show that the performances of the read operations are comparable to current implementation while the cost of the write operations are bound to the public blockchain mining time that limits the maximum number of transactions that can be processed per second. Therefore there is a tradeoff between security and performances.
 
 \keywords{
 Blockchain, Identity Management, Distributed Systems,  OSNs}
