@@ -40,6 +40,8 @@ R3 Corda \cite{corda_whitepaper}& Yes & Yes & Yes & No \\
 \label{table:1}
 \end{table}
 
+
+
 Given this constrain, the Ethereum technology seems to be the one that most fits our necessities of replacing the previous DHT system.
 
 \begin{notation}
@@ -107,7 +109,7 @@ There are two types of transactions: \textit{account creation} and \textit{messa
   \item \textbf{data}: field with unlimited size, specify the input data of the message call.
 \end{itemize}
 
-Is trivial to notice that among all these fields the \textit{v}, \textit{r} and \texti{s} are the most private ones; basing on this assumption we aim to create a workflow which allows the sender to create and upload transactions even when an internet connection is not available to him. 
+Is trivial to notice that among all these fields the \textit{v}, \textit{r} and \textit{s} are the most private ones; basing on this assumption we aim to create a workflow which allows the sender to create and upload transactions even when an internet connection is not available to him. 
 
 \subsubsection{Serializability of the Ethereum transaction}
 Each user has a public key and a private key. It is possible to infer the public key starting from the private key; so that, given a random sequence of bytes is possible to create the key pair.
@@ -133,8 +135,8 @@ At this stage is not possible to decrypt it or change any fields.
 
 It is therefore possible to stream the bytes of the transaction from one device to another in a safe manner.
 
-Put the picture made with illustrator which is self explanatory
 
 \begin{notation}
+  Put the picture made with illustrator which is self explanatory
   Need to maintain the account key pair in order to validate the social record
 \end{notation}
