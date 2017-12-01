@@ -159,7 +159,7 @@
 
 
 %% Text of abstract
-SONIC is an identity management protocol that allows to have a unique user social profile and to communicate with other users on different online social networks (OSN). Sonic relies on a distributed system called Global Social Lookup System. GSLS can be seen as a service mapping a user global identity to its social profiles. Is open source and based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness carries a list of security issue. 
+SONIC is an identity management protocol that allows to have a unique user social profile and to communicate with other users on different online social networks (OSN). Sonic relies on a distributed system called Global Social Lookup System (GSLS). GSLS can be seen as a service mapping a user global identity to its social profiles. Is open source and based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness carries a list of security issues. 
 
 The aim of this project is to overcome these issues by exploiting the characteristic of blockchain. In fact, consensus, distribution and unforgeability of blockchain are valuable features in a context where information needs to be distributed and everybody needs to agree on the same state. 
  
@@ -192,7 +192,7 @@ This document requires readers to be familiar with terms and concepts of blockch
 \item[GSLS Client]              It is a piece of code that allows the user to interact and send request to the GSLS server. In our last approach, the client is implemented as a Desktop application.
 \item[GSLS server (or node)]    The GSLS server is a piece of code that exposes api callable by the GSLS client via HTTP protocol. The server is also a blockchain client in that it is either connected to an Ethereum node or it is an actual node in the network.
 \item[DHT]                      A distributed hash table (DHT) is a class of a decentralised distributed system that provides a lookup service similar to a hash table.
-\item[SR]                       Social record, the user is the one that owns a social record and has the right to create and update it as well as to search for other social records. The user does this by interacting with an application, the GSLS client.
+\item[SR]                       Social record, the user is the one that owns a social record and has the right to create and update it as well as to search for other social records. The user does this by interacting with an application, the GSLS client. Inside there are account information such as name, surname, profile picture location, etc.
 \end{basedescript}
 
 

@@ -12,7 +12,7 @@ What SONIC aims to reach is to connect all the platforms in a ``decentralized an
 User identification is performed via a generated Unified Unique Identifier (UUID) derived from a \textit{PKCS\#8} \cite{pkcs8}with 8 random bytes added at the end, which is then decrypted with \textit{PBKDF\#2} \cite{pkcs8} with settings SHA256 \cite{hansen_us} for 10 000 iterations.
 The output is finally a 256bit long field which is converted in base36, generating the definitive UUID. \par
 
-Example of a UUID is: \\ \textbf{3R2IWN230NFI2QBYUDEQW02134DBSUIBPPOFWCDIN221343EEE} \par
+Example of a UUID is: \\ \textbf{3R2IWN230NFI2QBYUDEQW02134DBSUIBPPOFWCDIN221343EEE}\cite{gondor_sonic:_2014} \par
 
 Accounts are stored in a distributed directory service named \textit{Global Social Lookup System} which use a DHT in order to store and retrieve the single accounts. In particular, the accounts are hashed and based on the hash stored in a subset of GSLS Servers (consistent hashing). \par
 
@@ -24,7 +24,7 @@ DHT as a storage layer seemed to be the best solution in the previous implementa
 This lack results in the possibility to send malicious information (such as delete users).
 Thus, given the open source distribution licence, the risk of such attack is higher since anyone can set up its own GSLS node and join the network: compromising the entire system. \par
 
-Another secondary problem is the distributed nature of the DHT which, in the current system, distributes the records with indirect replication \cite{_tomp2p_2017} (a certain number \textit{n} of nodes store the same social record). Nevertheless the users' information must be quickly retrievable by the main OSNs and in the current solution there may be some delays. \par
+Another secondary problem is the distributed nature of the DHT which, in the current system, distributes the records with indirect replication \cite{_tomp2p_2017} (a certain number \textit{n} of nodes store the same social record). Nevertheless the users' information must be quickly retrievable by the main OSNs and in the current solution there may be some delays in case the record is stored into a different GSLS. \par
 
 One last issue of the current GSLS is that the records are store in the memory (RAM) and in case of failure or switch off of the GSLS server, all the records on that server will be lost. \par
 
