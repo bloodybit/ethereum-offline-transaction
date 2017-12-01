@@ -1,0 +1,21 @@
+\section{Research questions and hypotheses}
+\label{S:3}
+
+The project aims to find a solution able to guarantee security and agreement in an open source environment, where different competitors share the same data structure (meaning the social record). In other words, we mainly focus on the possibility to improve GSLS by replacing the DHT with blockchain. We want to find out whether it is possible to overcome the security issues of the former design and show how it can be done. After this, we need to see if the implementation based on blockchain has performances comparable to the previous solution. 
+
+\subsection{Requirements of the solution}
+
+The features that the new implementation requires:
+
+\begin{itemize}
+  \item Consistent and distributed storage, able to eventually converge to the same state and to persist in case of failures.
+  \item A secure procedure to create, update and delete the social records of the users. The new solution must, in addition, be able to guarantee the security of the database even in case of a malicious attack or faulty behavior of the peer nodes.
+  \item The new solution should be able to guarantee a faster lookup of the records based on the UUID key. This will allow to quickly provide the user's information to the requesting OSN or user. It may seem a secondary issue but, in a live environment, in order to convince the major OSNs to join such system, the solution should not reflect negatively on the performance.
+\end{itemize}
+
+% The project will use the analytic method since it must follow the GSLS and the selected blockchain specifications in order to create a reliable and consistent transaction. The transaction should
+% be created and sent without loss of data impact on the users’device as well as be safe and secure.
+
+% \subsection{Analytic method}
+
+% to do... 

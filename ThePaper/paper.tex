@@ -30,6 +30,7 @@
 \usepackage{courier}
 %
 \usepackage{bookmark}
+\usepackage{newclude}
 
 \usepackage{fancyhdr}
 \providecommand{\keywords}[1]{\textbf{\textit{Index terms---}} #1}
@@ -158,16 +159,16 @@
 
 
 %% Text of abstract
-SONIC is an identity management protocol that allows to have a unique user social profile and to migrate it between different online social networks (OSN). Sonic relies on a distributed system called Global Social Lookup System. GSLS can be seen as a service mapping a user global identity to its social profiles. Is open source and based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness carries a list of security issue. The aim of this project is to overcome these issues by exploiting the characteristic of blockchain. 
+SONIC is an identity management protocol that allows to have a unique user social profile and to communicate with other users on different online social networks (OSN). Sonic relies on a distributed system called Global Social Lookup System. GSLS can be seen as a service mapping a user global identity to its social profiles. Is open source and based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness carries a list of security issue. 
 
-Consensus, distribution and unforgeability of blockchain are valuable characteristics in a context where information needs to be shared and everybody needs to agree on the same state. 
+The aim of this project is to overcome these issues by exploiting the characteristic of blockchain. In fact, consensus, distribution and unforgeability of blockchain are valuable features in a context where information needs to be distributed and everybody needs to agree on the same state. 
  
 Hence, we describe some of the security issues related to the current implementation of GSLS and propose a new design that takes advantage of blockchain. The new system is then evaluated in terms of performance, security, privacy and invasiveness for the user. 
 
-The results show that the performances of the read operations are comparable to current implementation while the cost of the write operations are bound to the public blockchain mining time that limits the maximum number of transactions that can be processed per second. Therefore there is a tradeoff between security and performances.
+The results show that the performances of the read operations are comparable to the current implementation while the cost of the write operations are bound to the public blockchain mining time. Therefore there is a tradeoff between security and performances depending on the limitations to the number of transactions that can be processed per second. 
+\\
 
-\keywords{
-Blockchain, Identity Management, Distributed Systems,  OSNs}
+\keywords{Blockchain, Identity Management, Distributed Systems, OSNs}
 %% keywords here, in the form: keyword \sep keyword
 
 %% MSC codes here, in the form: \MSC code \sep code
@@ -197,15 +198,13 @@ This document requires readers to be familiar with terms and concepts of blockch
 
 \clearpage
 
+\include*{sections/02_introduction} % introduction to the topic 
+\include*{sections/03_related-works} % theoretical framework and literature study 
+\include*{sections/04_hypotheses} % hypotheses, premises and considerations
+\include*{sections/05_methods}      % methods used to validate our assumptions
+\include*{sections/06_results}   % result and analysis 
+\include*{sections/07_discussion}   % discussion
 
-
-\include{sections/introduction} % introduction to the topic 
-\include{sections/relatedWorks} % theoretical framework and literature study 
-\include{sections/transaction} 
-\include{sections/implementation} % research questions and hypotheses
-\include{sections/methods}      % methods use to validate our assumptionsap
-\include{sections/evaluation}   % result and analysis 
-\include{sections/conclusion}   % discussion
 
 
 \bibliographystyle{IEEEtran}
