@@ -40,13 +40,21 @@ This approach might be criticized because it implements one more data structure:
 
 \subsection{Write operation}
 The user must create or own a \textit{key pair} (public \& private key) on the client side (See Electron desktop application in the appendix).
-In order to create a new transaction, the sender must know his \textit{nonce}, the current \textit{gasPrice} and the \textit{gasLimit}. This values are available to any node, therefore the desktop application sends a get request to the GSLS along with its account address. Once all the fields are known to the sender, she signs it with its private key, encode it via RLP and send to the GSLS server.
+In order to create a new transaction, the sender must know his \textit{nonce}, the current \textit{gasPrice} and the \textit{gasLimit}. This values are available to any node, therefore the desktop application sends a get request to the GSLS along with its account address. Once all the fields are known to the sender, she signs it with her private key, encode it via RLP and send to the GSLS server.
 
-\begin{notation}
-  To do...
-\end{notation}
+Once the GSLS server receives the transaction it can optionally verify the content of the transaction (finding the public key of the sender via elliptic curve recovery) or directly forward the transaction to Ethereum node.
+
+The transaction will there be analysed and ran in the EVM: therefore, if correct, validated, mined and broadcasted.
+
 
 \subsection{Read operation}
+
+The digital resource or physical user that wants to access the \textit{social record} given a \textit{globalId} can retrieve this information from the blockchain via a \textit{message call}.
+This operation is publicly available suggesting that a proper transaction is still needed but, in this case, can be encrypted by any ethereum user (e.g. a server ad-hoc created account), thus this message call is distinguished by the keyword \textit{constant} which means that the execution of such instruction does not change the state.
+In other words the situation described in \ref{ethereumEcosystem:1} $t(\sigma_t) = \sigma_{t+1}$ is such as $\sigma_t = \sigma_{t+1}$ and therefore the specific transaction $t$ can be ignored by the distributed system and be run locally without any gas cost.
+
+Read operations are in fact free and, in an optimal configuration where the GSLS 2.0 and the Ethereum node are on the same host, fast since the information is locally available
+
 \begin{notation}
   To do...
 \end{notation}
