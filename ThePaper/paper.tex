@@ -159,13 +159,13 @@
 
 
 %% Text of abstract
-SONIC is an identity management protocol that allows to have a unique user social profile and to communicate with other users on different online social networks (OSN). Sonic relies on a distributed system called Global Social Lookup System (GSLS). GSLS can be seen as a service mapping a user global identity to its social profiles. Is open source and based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness carries a list of security issues. 
+SONIC is an identity management protocol that allows users' social profile and to communicate with other users on different online social networks (OSN). Sonic relies in a distributed system called Global Social Lookup System (GSLS). GSLS can be seen as a service mapping a user global identity to their social profiles. GSLS is open source and is based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness raises a number of security issues. 
 
-The aim of this project is to overcome these issues by exploiting the characteristic of blockchain. In fact, consensus, distribution and unforgeability of blockchain are valuable features in a context where information needs to be distributed and everybody needs to agree on the same state. 
+The aim of this project is to overcome these issues by exploiting the characteristic of a blockchain. More specifically the properties of: consensus, distribution and unforgeability of a blockchain are valuable features in a context where information needs to be distributed and everybody needs to agree on the same state. 
  
-Hence, we describe some of the security issues related to the current implementation of GSLS and propose a new design that takes advantage of blockchain. The new system is then evaluated in terms of performance, security, privacy and invasiveness for the user. 
+In this report, we describe some of the security issues related to the current implementation of GSLS and propose a new design that takes advantage of blockchain. The new system is then evaluated in terms of performance, security, privacy and invasiveness for the user. 
 
-The results show that the performances of the read operations are comparable to the current implementation while the cost of the write operations are bound to the public blockchain mining time. Therefore there is a tradeoff between security and performances depending on the limitations to the number of transactions that can be processed per second. 
+The results show that the performances of the read operations are comparable to the current implementation, while the cost of the write operations are directly related to the public blockchain mining time. Therefore there is a tradeoff between security and performances depending on the number of blockchain transactions that can be processed per second. 
 \\
 
 \keywords{Blockchain, Identity Management, Distributed Systems, OSNs}
@@ -186,13 +186,16 @@ The results show that the performances of the read operations are comparable to 
 \section*{List of Acronyms and Abbreviations}
 \label{list-of-acronyms-and-abbreviations}
 
-This document requires readers to be familiar with terms and concepts of blockchain technology, identity management and distributed networks. For clarity we summarize some of these terms and give a short description of them before presenting them in next sections.
+This document requires readers to be familiar with terms and concepts of blockchain technology, identity management and distributed networks. For clarity we summarize some of these terms and give a short description of them before presenting them in the report.
 
+\begin{annotation}
+    Put in alphabetical order
+\end{annotation}
 \begin{basedescript}{\desclabelstyle{\pushlabel}\desclabelwidth{10em}}
 \item[GSLS Client]              It is a piece of code that allows the user to interact and send request to the GSLS server. In our last approach, the client is implemented as a Desktop application.
 \item[GSLS server (or node)]    The GSLS server is a piece of code that exposes api callable by the GSLS client via HTTP protocol. The server is also a blockchain client in that it is either connected to an Ethereum node or it is an actual node in the network.
 \item[DHT]                      A distributed hash table (DHT) is a class of a decentralised distributed system that provides a lookup service similar to a hash table.
-\item[SR]                       Social record, the user is the one that owns a social record and has the right to create and update it as well as to search for other social records. The user does this by interacting with an application, the GSLS client. Inside there are account information such as name, surname, profile picture location, etc.
+\item[SR]                       Social record, the user is who owns a social record and has the right to create and update it as well as to search for other social records. The user does this by interacting with an application, the GSLS client. The social record contains account information such as name, surname, profile picture location, etc.
 \item[Message call]
 \end{basedescript}
 
