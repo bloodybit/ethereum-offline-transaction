@@ -1,17 +1,17 @@
 \section{Research questions and hypotheses}
 \label{S:3}
 
-The project aims to find a solution able to guarantee security and agreement in an open source environment, where different competitors share the same data structure (meaning the social record). In other words, we mainly focus on the possibility to improve GSLS by replacing the DHT with blockchain. We want to find out whether it is possible to overcome the security issues of the former design and show how it can be done. After this, we need to see if the implementation based on blockchain has performances comparable to the previous solution. 
+The project aims to find a solution to guarantee security and agreement in an open source environment, where different competitors share the same data structure (given SR). We mainly focus on the possibility to improve GSLS by replacing the DHT with blockchain. We want to find out whether it is possible to overcome the security issues of the former design and show how it can be done. After this, we need to see if an implementation based on blockchain has a performance comparable to the existing solution. 
 
 \subsection{Requirements of the solution}
 
-The features that the new implementation requires:
+The features that the new implementation requires are:
 
 \begin{itemize}
   \item Consistent and distributed storage, able to eventually converge to the same state and to persist in case of failures.
-  \item A secure procedure to create, update and delete the social records of the users. The new solution must, in addition, be able to guarantee the security of the database even in case of a malicious attack or faulty behavior of the peer nodes.
-  \item The new solution should be able to guarantee a faster lookup of the records based on the UUID key. This will allow to quickly provide the user's information to the requesting OSN or user. It may seem a secondary issue but, in a live environment, in order to convince the major OSNs to join such system, the solution should not reflect negatively on the performance.
-  \item Lastly, it should be user friendly: not requiring difficult and / or long setup to the users of the OSNs.
+  \item A secure procedure to create, update, and delete the SRs of the users. In addition the new solution must be able to guarantee the security of the data even in case of a malicious attack or faulty behavior of the peer nodes.
+  \item The new solution should be able to guarantee a faster lookup of the records based on the UUID key. This will allow it to quickly provide the user's information to the requesting OSN or user. It may seem a secondary issue; but, in a live environment, such performance is necessary in order to convince the major OSNs to join such system.
+  \item Lastly, it should be user friendly thus, not require difficult and / or long setup by the users of the OSNs.
 \end{itemize}
 
 % The project will use the analytic method since it must follow the GSLS and the selected blockchain specifications in order to create a reliable and consistent transaction. The transaction should

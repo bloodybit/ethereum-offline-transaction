@@ -44,6 +44,7 @@
  \usepackage{color}
  \usepackage{framed}
  \usepackage{listings}
+ \usepackage{placeins} 
 
  % Write Answer
  \newenvironment{notation}{%
@@ -188,9 +189,10 @@ The results show that the performances of the read operations are comparable to 
 
 This document requires readers to be familiar with terms and concepts of blockchain technology, identity management and distributed networks. For clarity we summarize some of these terms and give a short description of them before presenting them in the report.
 
-\begin{annotation}
+\begin{notation}
     Put in alphabetical order
-\end{annotation}
+\end{notation}
+
 \begin{basedescript}{\desclabelstyle{\pushlabel}\desclabelwidth{10em}}
 \item[GSLS Client]              It is a piece of code that allows the user to interact and send request to the GSLS server. In our last approach, the client is implemented as a Desktop application.
 \item[GSLS server (or node)]    The GSLS server is a piece of code that exposes api callable by the GSLS client via HTTP protocol. The server is also a blockchain client in that it is either connected to an Ethereum node or it is an actual node in the network.
