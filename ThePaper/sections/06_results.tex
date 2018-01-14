@@ -53,10 +53,15 @@ The digital resource or physical user that wants to access the \textit{social re
 This operation is publicly available suggesting that a proper transaction is still needed but, in this case, can be encrypted by any ethereum user (e.g. a server ad-hoc created account), thus this message call is distinguished by the keyword \textit{constant} which means that the execution of such instruction does not change the state.
 In other words the situation described in \ref{ethereumEcosystem:1} $t(\sigma_t) = \sigma_{t+1}$ is such as $\sigma_t = \sigma_{t+1}$ and therefore the specific transaction $t$ can be ignored by the distributed system and be run locally without any gas cost.
 
-Read operations are in fact free and, in an optimal configuration where the GSLS 2.0 and the Ethereum node are on the same host, fast since the information is locally available
+Read operations are in fact free and, in an optimal configuration where the GSLS 2.0 and the Ethereum node are on the same host: fast, since the information is locally available.
+
+As an example, the social network A can retrieve the SR of the user X in the social network B, then make an HTTP call to social network B asking for a particular event and finally report the information to user X. It is possible to notice that the user X does not need to be registered in the social network B.
 
 \begin{notation}
-  To do...
+  To do... 
+  - Analysis 
+  - Explain better the workflow? Maybe put the image of the slides as a self explanatory pic
+  - Also put the old GSLS image? (the one we made for sebastian)
 \end{notation}
 
 

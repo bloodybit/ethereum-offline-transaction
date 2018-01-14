@@ -14,6 +14,10 @@ The output is a 256bit long value which is converted in base36, generating a def
 
 An example of a UUID is: \\ \textbf{3R2IWN230NFI2QBYUDEQW02134DBSUIBPPOFWCDIN221343EEE}\cite{gondor_sonic:_2014} \par
 
+\begin{notation}
+Format the UUID properly
+\end{notation}
+
 Accounts are stored in a distributed directory service named \textit{Global Social Lookup System} using a DHT to store and retrieve the individual accounts. In particular, the accounts are hashed and based on the hash stored in a subset of GSLS Servers (consistent hashing). \par
 
 Each user has 2 asymmetric keys: \textit{PersonalKeyPair} and \textit{AccountKeyPair}. The former is used to sign the registration and update the account information in the DTH, while the latter is used to sign and verify every payload exchanged through the SONIC implementation.

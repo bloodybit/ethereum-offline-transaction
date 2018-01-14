@@ -3,9 +3,47 @@
 
 \begin{notation}
     to do... \\
+    We made it
+    Pros
+    Cons
 \end{notation}
 
-\subsection{Pros and Cons}
+Given the consideration of above, this paper shows a new approach and a different workflow of the execution of blockchain contracts where the user is not required anymore to understand the concept of blockchain and set up nodes.
+The OSNs instead, can form a consortium and therefore increase the quality of their service.
+
+Thanks to the described approach is now possible to design a decentralized authentication system, avoiding the lacks and failures of the previous approach (GSLS with DHT), guaranteeing:
+
+\begin{itemize}
+    \item{Recovery in case of failure:} against previous GSLS implementation, in case of failure of the system, the information stored in the node are preserved. When the node is up and running again, it will just need to synchronize and, retrieve the latest transactions.
+    \item{Prevent faulty behaviour:} In case of faulty, misleading or malicious information, the blockchain preserve the correct state not executing the incorrect transaction. Attacks are therefore unlikely to happen (the only viable attack is the majority attack)
+\end{itemize}
+
+\begin{notation}
+    - Quote a paper / article about majority attack.
+\end{notation}
+
+Unfortunately, one of the main objectives was to have a fast lookup system.
+The developed solution was, on the paper, likely to satisfy this particular requirement instead, our analysis shows the opposite. 
+Nevertheless, blockchain is a new topic and Ethereum is not known as the quickest solution in the field but because of its large community of developers that embraces it and, is for this reason, that we decided to use it to test the solution.
+
+Indeed, for the sake of the research and of the SONIC project it was more important to design a solution which could be safe and reliable in the first place. Optimization can still be performed, such as a caching system of the user that refresh the SR only when a new writing transaction has been made.
+
+
+
+
+
+
+\subsection{Pros}
+
+In term of features and performance the GSLS v2.0 improves the GSLS v1.0:
+
+\begin{itemize}
+    \item{Decentralized storage:} Now each node contains all the information, therefore is harder to perpetuate an attack.
+    \item{Fault tolerant:} The failure of one node does not invalidate the whole system, thus the same failure is easily recoverable 
+\end{itemize}
+
+
+\subsection{Cons}
 
 \begin{notation}
     to do... \\
