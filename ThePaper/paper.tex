@@ -4,13 +4,13 @@
 \title{Identity Management in Blockchain}
 \author{
         \textsc{Riccardo Sibani}
-            \qquad
+            \qquad 
         \textsc{Filippo Boiani}
         \mbox{}\\
         \normalsize
-            \texttt{rsibani@kth}
-        \textbar{}
-            \texttt{boiani@kth.se}
+            \texttt{rsibani@kth }
+            \qquad \qquad
+            \texttt{    boiani@kth.se}
         % \normalsize
         %     \texttt{@kth.se}
 }
@@ -67,6 +67,7 @@
 %% \usepackage{rotating}		 %% For text rotating
 \usepackage{array}			 %% For table wrapping
 \usepackage{graphicx}	                 %% Support for images
+\graphicspath{ {images/} }
 \usepackage{float}			 %% Suppor for more flexible floating box positioning
 \usepackage{color}                       %% Support for colour 
 \usepackage{mdwlist}
@@ -149,9 +150,6 @@
 
 \maketitle
 
-\begin{notation}
-    To finish and correct once the report is done!
-\end{notation}
 
 \begin{abstract}
 \label{sec:abstract}
@@ -160,7 +158,7 @@
 
 
 %% Text of abstract
-SONIC is an identity management protocol that allows users' social profile and to communicate with other users on different online social networks (OSN). Sonic relies in a distributed system called Global Social Lookup System (GSLS). GSLS can be seen as a service mapping a user global identity to their social profiles. GSLS is open source and is based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness raises a number of security issues. 
+SONIC is an identity management protocol that allows users to have a unique social profile and communicate with other users on different online social networks (OSN). Sonic relies in a distributed system called Global Social Lookup System (GSLS). GSLS can be seen as a service mapping a user global identity to their social profiles. GSLS is open source and is based on a distributed hash table (DHT) to handle communication and persistence. This implementation and its openness raises a number of security issues. 
 
 The aim of this project is to overcome these issues by exploiting the characteristic of a blockchain. More specifically the properties of: consensus, distribution and unforgeability of a blockchain are valuable features in a context where information needs to be distributed and everybody needs to agree on the same state. 
  
@@ -187,20 +185,15 @@ The results show that the performances of the read operations are comparable to 
 \section*{List of Acronyms and Abbreviations}
 \label{list-of-acronyms-and-abbreviations}
 
-This document requires readers to be familiar with terms and concepts of blockchain technology, identity management and distributed networks. For clarity we summarize some of these terms and give a short description of them before presenting them in the report.
+This document requires readers to be familiar with terms and concepts of blockchain technology, identity management and distributed networks. For clarity we summarize some of the acronyms and give a short description of them before presenting them in the report.
 
-\begin{notation}
-    Put in alphabetical order
-\end{notation}
 
 \begin{basedescript}{\desclabelstyle{\pushlabel}\desclabelwidth{10em}}
-\item[GSLS Client]              It is a piece of code that allows the user to interact and send request to the GSLS server. In our last approach, the client is implemented as a Desktop application.
-\item[GSLS server (or node)]    The GSLS server is a piece of code that exposes api callable by the GSLS client via HTTP protocol. The server is also a blockchain client in that it is either connected to an Ethereum node or it is an actual node in the network.
-\item[DHT]                      A distributed hash table (DHT) is a class of a decentralised distributed system that provides a lookup service similar to a hash table.
-\item[SR]                       Social record, the user is who owns a social record and has the right to create and update it as well as to search for other social records. The user does this by interacting with an application, the GSLS client. The social record contains account information such as name, surname, profile picture location, etc.
-\item[Message call]
+    \item[DHT]                      A distributed hash table (DHT) is a class of a decentralised distributed system that provides a lookup service similar to a hash table.
+    \item[GSLS Client]              It is a piece of code that allows the user to interact and send request to the GSLS server. In our last approach, the client is implemented as a Desktop application.
+    \item[GSLS server (or node)]    The GSLS server is a piece of code that exposes api callable by the GSLS client via HTTP protocol. The server is also a blockchain client in that it is either connected to an Ethereum node or it is an actual node in the network.
+    \item[SR]                       Social record, owned by the user, who has the right to create and update it as well as to search for other social records. To do so, the user interacts with an application, the GSLS client. The social record contains account information such as name, surname, and metadata like globalID and user profile location.
 \end{basedescript}
-
 
 \clearpage
 
@@ -211,9 +204,8 @@ This document requires readers to be familiar with terms and concepts of blockch
 \include*{sections/06_results}   % result and analysis 
 \include*{sections/07_discussion}   % discussion
 
-
-
 \bibliographystyle{IEEEtran}
+% \bibliographystyle{unsrt}
 %%\bibliographystyle{myIEEEtran}
 
 \bibliography{bibliography/bib}
@@ -221,6 +213,5 @@ This document requires readers to be familiar with terms and concepts of blockch
 % \section{Insensible Approximation}
 
 % Note that the Appendix or Appendices are Optional.
-
 
 \end{document}
