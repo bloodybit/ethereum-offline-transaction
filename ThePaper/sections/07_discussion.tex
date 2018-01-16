@@ -1,25 +1,15 @@
 \section{Discussion}
 \label{S:6}
 
-\begin{notation}
-    Change title discussion to conclusion?
-
-    I don't really get the plot chip gave... We have discussion but not conclusion? WTF?
-\end{notation}
-
 Given the consideration of above, this paper shows a new approach and a different workflow of the execution of blockchain contracts where the user is not required anymore to understand the concept of blockchain and set up nodes.
 The OSNs instead, can form a consortium and therefore increase the quality of their service.
 
 Thanks to the described approach is now possible to design a decentralized authentication system, avoiding the lacks and failures of the previous approach (GSLS with DHT), guaranteeing:
 
-\begin{description}
-    \item[Recovery in case of failure:] against previous GSLS implementation, in case of failure of the system, the information stored in the node are preserved. When the node is up and running again, it will just need to synchronize and, retrieve the latest transactions.
-    \item[Prevent faulty behaviour:] In case of faulty, misleading or malicious information, the blockchain preserve the correct state not executing the incorrect transaction. Attacks are therefore unlikely to happen (the only viable attack is the majority attack)
-\end{description}
-
-\begin{notation}
-    - Quote a paper / article about majority attack.
-\end{notation}
+\begin{itemize}
+    \item \textbf{Recovery in case of failure}: against previous GSLS implementation, in case of failure of the system, the information stored in the node are preserved. When the node is up and running again, it will just need to synchronize and, retrieve the latest transactions.
+    \item \textbf{Prevent faulty behaviour}: In case of faulty, misleading or malicious information, the blockchain preserve the correct state not executing the incorrect transaction. Attacks are therefore unlikely to happen (the only viable attack is the majority attack)
+\end{itemize}
 
 Unfortunately, one of the main objectives was to have a fast lookup system.
 The developed solution was, on the paper, likely to satisfy this particular requirement instead, our analysis shows the opposite. 
@@ -28,49 +18,39 @@ Nevertheless, blockchain is a new topic and Ethereum is not known as the quickes
 Indeed, for the sake of the research and of the SONIC project it was more important to design a solution which could be safe and reliable in the first place. Optimization can still be performed, such as a caching system of the user that refresh the SR only when a new writing transaction has been made.
 
 
-
-
-
-
 \subsection{Pros}
 
 In term of features and performance the GSLS v2.0 improves the GSLS v1.0:
 
-\begin{description}
-    \item{Decentralized storage:} Now each node contains all the information, therefore is harder to perpetuate an attack.
-    \item[Fault tolerant:] The failure of one node does not invalidate the whole system, thus it is easily recoverable by the node.
-    \item[Endless scalability:] assuming that the majority of the operations will be reading operations, it is safe to assume that the architecture can scale endlessly. This is due to the fact each node is an exact replica of the others: when an OSN needs to scale it can simply increase the number of nodes.
-    \item[No overhead for the users:] the GSLS v0.1 was requiring specific skills in order to be up and running. With the new solution all the complex processes are carried out by the OSN, without influencing the user experience.
-\end{description}
+\begin{itemize}
+    \item \textbf{Decentralized storage}: Now each node contains all the information, therefore is harder to perpetuate an attack.
+    \item \textbf{Fault tolerant}: The failure of one node does not invalidate the whole system, thus it is easily recoverable by the node.
+    \item \textbf{Endless scalability}: assuming that the majority of the operations will be reading operations, it is safe to assume that the architecture can scale endlessly. This is due to the fact each node is an exact replica of the others: when an OSN needs to scale it can simply increase the number of nodes.
+    \item \textbf{No overhead for the users}: the GSLS v0.1 was requiring specific skills in order to be up and running. With the new solution all the complex processes are carried out by the OSN, without influencing the user experience.
+\end{itemize}
 
 
 \subsection{Cons}
 
-\begin{description}
-    \item[Different credential system:] Users are used to username - password credential and, in case of lost, they can be retrieved clicking the button \textit{"I forgot my password"}. This is not possible in any blockchain system since it is decentralized and no central authority is in control of your credential.
-    \item[Payment:] writing operation have a price that is variable if converted in fiat currency. Some blockchains do not require a payment while the one used in this research (Ethereum) does. Regardless the cost of the transaction is important to define who (if the user or the OSN) will pay for the transaction. Answering to this ethical question is not the duty of this document but the authors feel the need to put a question on who should burden the cost of it.
-\end{description}
+Among the arguments against the new version, we can list: 
+
+\begin{itemize}
+    \item \textbf{Different credential system}: Users are used to username - password credential and, in case of lost, they can be retrieved clicking the button \textit{"I forgot my password"}. This is not possible in any blockchain system since it is decentralized and no central authority is in control of your credential.
+    \item \textbf{Payment}: writing operation have a price that is variable if converted in fiat currency. Some blockchains do not require a payment while the one used in this research (Ethereum) does. Regardless the cost of the transaction is important to define who (if the user or the OSN) will pay for the transaction. Answering to this ethical question is not the duty of this document but the authors feel the need to put a question on who should burden the cost of it.
+\end{itemize}
 
 
 \subsection{Performance compared to the current system}
 
-\begin{notation}
-    to do... \\
-\end{notation}
-
+As we can see, there is a tradeoff between security and overall performances. The new solution demonstrate to be more secure but slower in terms of reading and writing operation. However, the test were run in a particular blockchain implementation just to make a proof of concept thereby showing the possibility to add the functionality of blockchain to the GSLS. It is important to point out that the performances can be improved by using a consortium blockchain or by changing the type of consensus (e.g. proof of stake).
 
 \subsection{Future work}
 
-Given the positive results of our solution and the out-of-the-box design we identified few areas that might beneficiate from the offline transaction.
-
-
-\begin{notation}
-    Please quote one paper on POS and spell acronym.
-\end{notation}
+Given the positive results of our solution and the out-of-the-box design we identified few areas that might benefit from the off-line transaction.
 
 \begin{description}
     
-    \item[Payment System:] POS is a payment system where the merchant needs to be connected to the internet and the buyer, trough a card can be identified. Once the merchant is able to identify the buyer, she can send the detail of the transaction to the POS circuit.
+    \item[Payment System:] a POS (point of sale) is a payment system where the merchant needs to be connected to the Internet and the buyer, trough a card can be identified. Once the merchant is able to identify the buyer, she can send the detail of the transaction to the POS circuit.
     A similar workflow can be created, where the user signs the blockchain transaction and sends it to the merchant that will then upload it.
 
     \item[IoT data transmission:] in remote areas or areas without signal, is possible to create the transaction and periodically upload them (e.g. when someone or a drone comes to pick the transaction and upload on the blockchain). This is useful for small devices that have to communicate between each other and preserve uniqueness and authenticity of the data that want to store.

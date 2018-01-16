@@ -3,6 +3,8 @@
 
 We investigated different blockchain implementations and compared their features to gain insight in to what would be the most suitable solution. We eventually decided upon Ethereum as it offers a Turing-complete language for smart contracts along with a great community of developers and extensive documentation. Of course, this choice has some side effectes, in this section we describe our steps in making this decision and the implementation of the system.  
 
+After having chosen the blockchain implementation and explained the new design, we describe the setup for the performance tests.
+
 \subsection{Choosing the blockchain}
 
 The choice of the most appropriate blockchain technology should take into account:
@@ -56,9 +58,9 @@ The features provided by Ethereum technology seem to be the ones that most fit o
 
 \begin{itemize}
   \item \textbf{Consistent storage by definition}: Ethereum blockchain creates different replicas of the same database in each node of the network. With such a solution, nodes can enter or exit the network without compromising any SR.
-  \item \textbf{Recovery from failyre}: In case of failure, it is possible to recover the state of the database and re-execute the missing transactions (pulling the transactions from the peers).
-  \item \textbf{Consistency}: Ethereum is a distributed ledger hence, it is not possible to forge part of the database (at least 50\% + 1 of the nodes must be corrupted). This prevents any node from sending misleading SRs.
-  \item \textbf{scalability}: One of the main features of the blockchain is its endless scalability: thus we can set up large number of nodes (multiple GSLS servers for each OSN and for those users who are willing to set up one node) without facing any delay.
+  \item \textbf{Recovery from failure}: In case of failure, it is possible to recover the state of the database and re-execute the missing transactions (pulling the transactions from the peers).
+  \item \textbf{Consistency}: Ethereum is a distributed ledger hence, it is not possible to forge part of the database (at least 50\% + 1 of the nodes must be corrupted \cite{dennis_rep_2015}). This prevents any node from sending misleading SRs.
+  \item \textbf{Scalability}: One of the main features of the blockchain is its endless scalability: thus we can set up large number of nodes (multiple GSLS servers for each OSN and for those users who are willing to set up one node) without facing any delay.
   Even better, increasing the size of the network and therefore the difficulty of a rewrite attack due to the requirement for compromising the 50\% + number of nodes.
   \item \textbf{Fast look up}: Hosting one node allows an entity to locally access the SRs stored into the GSLS storage. In contrast, in the previous implementation (with DHT) it was possible that one specific SR was only available in nodes far away from the requesting resource, creating a delay in the delivery of the information. 
 \end{itemize}
@@ -92,7 +94,7 @@ Headers of onners blocks\\
 \label{table:2}
 \end{table}
 
-Once the block is mined, is broadcasted and each node at state $t$  executes, through the Ethereum Virtual Machine (EVM), each transaction inside the block in order.
+Once the block is mined, is broadcasted and each node at state $t$  executes, through the EVM, each transaction inside the block in order.
 This algorithm allows the nodes to eventually converge to the same state $t+1$ at some point in time.
 
 Building the transaction is out of the scope of the EVM: this operations is delegated to the human being who owns the account or any sort of software/wallet she decides to employ.
@@ -136,6 +138,16 @@ At this stage is not possible to decrypt it or change any fields. It is therefor
 \begin{figure}[h]
 	\centering
   \includegraphics[width=1\textwidth]{gsls-architecture}
-	\caption{Basic architecture: n clients communicate with m GSLS server instances. The GSLS instances can interface with the blockchain because each and every of them is holding an Ethereum node. All the operations are referenced to the contract address storing the list of social records.}
+	\caption{Basic architecture: n clients communicate with m GSLS server instances. The GSLS instances can interface with the blockchain because each and every of them is holding an Ethereum node. All the operations are referenced to the contract address storing the list of SRs.}
 	\label{fig4}
 \end{figure}
+
+\subsection{Performance Tests}
+
+In order to make the tests possible, we created and deployed a smart contract on the Ethereum testnet, a blockchain with a simplified proof of work used by developers to test applications. Although the consensus is simplified, the mining time is comparable to the main public chain. 
+
+The application was deployed in a single machine with 1 CPU and 4GB of RAM. Since the application relied on the distribution of blockchain, it was possible to use only a single machine, while the previous implementation needed to spawn at least three nodes to create the DHT \cite{gondor_distributed_2016}. The tested application also relied upon an on-line service to connect to an Ethereum blockchain node, although, in an ideal case, the GSLS server node should run a blockchain node. 
+
+After having deployed the service, the tests were run in a similar fashion to the fist implementation of the GSLS. The service was tested on writing and reading times of the SR. To test the writing operation, 500 HTTP PUT and POST requests were sent to the service. The request body held the signed transaction with different \textit{gasPrices} and \textit{globalIDs}. To evaluate the performance of the reading operation, we sent 10000 HTTP GET requests to the service. All the request durations were logged and stored in a log file.
+
+
